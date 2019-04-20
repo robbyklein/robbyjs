@@ -1,0 +1,37 @@
+{
+  "name": "robbyjs",
+  "version": "0.0.1",
+  "description": "A simple and lightweight jQuery-like JavaScript library. ",
+  "main": "dist/robbyjs.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "uglifyjs ./src/robbyjs.js -o ./dist/robbyjs.min.js --compress --mangle && cp ./src/robbyjs.js ./dist/robbyjs.js",
+    "dev": "nodemon --watch src --exec \"uglifyjs ./src/robbyjs.js -o ./dist/robbyjs.min.js --compress --mangle\" && cp ./src/robbyjs.js ./dist/robbyjs.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/robbyklein/robbyjs.git"
+  },
+  "keywords": [
+    "javascript",
+    "dom",
+    "manipulation",
+    "lightweight",
+    "small",
+    "jQuery",
+    "alternative"
+  ],
+  "author": "Robert Klein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbyklein/robbyjs/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://js.robbyk.com",
+  "devDependencies": {
+    "nodemon": "^1.18.11",
+    "uglifyjs": "^2.4.11"
+  }
+}
