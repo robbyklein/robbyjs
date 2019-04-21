@@ -26,6 +26,12 @@ robbyjs = {
     return this
   },
 
+  getDocument: function() {
+    this.elements = [document]
+    this.selected = this.elements
+    return this
+  },
+
   createHtml: function(html) {
     var wrapper = document.createElement('div')
     wrapper.innerHTML = html
@@ -196,6 +202,12 @@ robbyjs = {
     })
 
     return this
+  },
+
+  ready: function(callback) {
+    document.addEventListener("DOMContentLoaded", function() {
+      callback()
+    })
   },
 
   /* 
@@ -370,6 +382,7 @@ robbyjs = {
 
 $ = function(selector, contextSelector) {
   if (selector === window) return robbyjs.getWindow()
+  if (selector === document) return robbyjs.getDocument()
 
   return robbyjs.getElements(selector, contextSelector)
 }
