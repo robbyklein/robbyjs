@@ -19,6 +19,13 @@ robbyjs = {
 
     return this
   },
+  
+  fromElement: function(element) {
+    this.elements = [element]
+    this.selected = this.elements
+
+    return this
+  },  
 
   getWindow: function() {
     this.elements = [window]
@@ -383,6 +390,7 @@ robbyjs = {
 $ = function(selector, contextSelector) {
   if (selector === window) return robbyjs.getWindow()
   if (selector === document) return robbyjs.getDocument()
+  if (selector instanceof HTMLElement) return robbyjs.fromElement(selector)
 
   return robbyjs.getElements(selector, contextSelector)
 }
