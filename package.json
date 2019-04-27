@@ -1,6 +1,6 @@
 {
   "name": "robbyjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple and lightweight jQuery-like JavaScript library. ",
   "main": "dist/robbyjs.min.js",
   "scripts": {
