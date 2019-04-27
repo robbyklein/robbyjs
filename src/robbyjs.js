@@ -19,13 +19,13 @@ robbyjs = {
 
     return this
   },
-  
+
   fromElement: function(element) {
     this.elements = [element]
     this.selected = this.elements
 
     return this
-  },  
+  },
 
   getWindow: function() {
     this.elements = [window]
@@ -212,7 +212,7 @@ robbyjs = {
   },
 
   ready: function(callback) {
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener('DOMContentLoaded', function() {
       callback()
     })
   },
@@ -252,6 +252,54 @@ robbyjs = {
   removeAttr: function(name) {
     this.selected.forEach(function(element) {
       element.removeAttribute('fuck')
+    })
+
+    return this
+  },
+
+  /*
+    Values
+  */
+
+  val: function(value) {
+    if (value === undefined) {
+      var values = []
+
+      this.selected.forEach(function(input) {
+        if (input.type.toLowerCase() == 'checkbox') {
+          values.push(input.checked)
+        } else if (input.type.toLowerCase() == 'radio') {
+          var radios = document.querySelectorAll('input[name="' + input.getAttribute('name') + '"]')
+
+          for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+              values.push(radios[i].value)
+              break
+            }
+          }
+        } else {
+          values.push(input.value)
+        }
+      })
+
+      return values.length > 1 ? values : values[0]
+    }
+
+    this.selected.forEach(function(input) {
+      if (input.type.toLowerCase() == 'checkbox') {
+        input.checked = value
+      } else if (input.type.toLowerCase() == 'radio') {
+        var radios = document.querySelectorAll('input[name="' + input.getAttribute('name') + '"]')
+
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].value === value) {
+            radios[i].checked = true
+            break
+          }
+        }
+      } else {
+        input.value = value
+      }
     })
 
     return this
